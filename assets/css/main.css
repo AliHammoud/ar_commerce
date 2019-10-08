@@ -1,6 +1,11 @@
 * {
   margin: 0;
   font-family: helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
 }
 
 .message {
@@ -29,4 +34,29 @@
 
 .message img {
   margin-right: 0.5rem;
+}
+
+.finder img {
+  transition: 0.3s;
+  opacity: 1;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.finder p {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  left: 50%;
+  top: calc(50% + 9.5rem);
+  transform: translateX(-50%);
+}
+
+.fade-out {
+  transition: 0.3s;
+  opacity: 0;
 }

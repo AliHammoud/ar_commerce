@@ -14,11 +14,14 @@
 
 <body style="margin: 0px; overflow: hidden;">
 
-  <div class="message hidden" id="m-marker-lost">
+  <div class="message hidden-up" id="m-marker-lost">
     <img src="assets/img/warn.svg" width="24px" height="24px;">
     <p>Maker was lost, point your camera at the marker again</p>
   </div>
-
+  <div class="finder" >
+    <img src="assets/img/cam.svg">
+    <p>Looking for a QR code</p>
+  </div>
   <a-scene embedded 
            vr-mode-ui="enabled: false"
            arjs="debugUIEnabled: false"
