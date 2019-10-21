@@ -4,29 +4,21 @@
 <head>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-  <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+  
+  <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
   
   <script src="assets/scripts/main.js"></script>
-
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
   
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
-
-  <div class="message hidden" id="m-marker-lost">
-    <img src="assets/img/warn.svg" width="24px" height="24px;">
-    <p>Maker was lost, point your camera at the marker again</p>
+  <div class="loader">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    <p>Loading</p>
   </div>
-  
-  <div class="finder" >
-    <img src="assets/img/cam.svg">
-    <p>Looking for a QR code</p>
-  </div>
-  
   <div class="tip fade-out" id="turntable">
-    <p> &lt &lt drag sideways to rotate item &gt &gt </p>
+    <p> &lt &lt drag to rotate item &gt &gt </p>
   </div>
   
   <div class="gui" id="bottom-menu">
@@ -38,27 +30,77 @@
   <div class="hide" id="backdrop">
     <div>
       <img src="assets/img/swoosh-black.svg">
-      <h1>Nike React<br> Element 55 SE</h1>
+      <h1>Nike Air Max<br> Sequent</h1>
       <p></p>
     </div>
   </div>
   
   
-  <a-scene embedded 
-           vr-mode-ui="enabled: false"
-           arjs="debugUIEnabled: false"
-           loading-screen="dotsColor: black; backgroundColor: white">
+  <a-scene vr-mode-ui="enabled: false" loading-screen="dotsColor: black; backgroundColor: white; enabled: false">
 
     <a-assets>
       <a-asset-item id="shoe" src="assets/models/shoe3/shoe.gltf"></a-asset-item>
+      <a-asset-item id="shoe-airmax" src="assets/models/airmax/airmax.gltf"></a-asset-item>
+      <img id="ground" src="./assets/img/shoe-shadow.png">
     </a-assets>
-
-    <a-marker id="qr-marker" type='pattern' url="assets/markers/pattern-qr-ar.patt">
     
-      <a-entity id="model" gltf-model="#shoe" rotation="0 -90 90" position="0 0 -1.2" scale="0.5 0.5 0.5"></a-entity>
-    </a-marker>
+    <a-light color="#ff8800" position="0 10 10" intensity="4"></a-light>
+    <a-light color="#008855" position="0 20 -10" intensity="4"></a-light>
+    <a-light type="ambient" intensity="2"></a-light>
+    
+    <a-entity id="target" gltf-model="#shoe-airmax" rotation="0 -1080 15" position="1 -5 0" scale="0 0 0" 
+              animation="
+                         property: scale; 
+                         to: 1 1 1; 
+                         loop: false; 
+                         dur: 420; 
+                         easing: easeInOutExpo
+                         "
+              animation__2="
+                         property: position; 
+                         to: 1 -0.75 0; 
+                         loop: false; 
+                         dur: 820; 
+                         easing: easeOutElastic;
+                         elasticity: 400;
+                         "
+              animation__3="
+                         property: rotation; 
+                         to: 0 0 15; 
+                         loop: false; 
+                         dur: 1000; 
+                         easing: easeOutElastic;
+                         "
+              >
+    </a-entity>
+    
+    <a-plane material="src:#ground; opacity:0.5; transparent:true" height="13" width="13" rotation="-90 -1090 0" position="0.25 -1 0" scale="0 0 0"
+             animation="
+                         property: scale; 
+                         to: 1 1 1; 
+                         loop: false; 
+                         dur: 420; 
+                         easing: easeInOutExpo
+                         "
+              animation__2="
+                         property: position; 
+                         to: 0.25 -1.75 0; 
+                         loop: false; 
+                         dur: 820; 
+                         easing: easeOutElastic;
+                         elasticity: 400;
+                         "
+              animation__3="
+                         property: rotation; 
+                         to: -90 90 0; 
+                         loop: false; 
+                         dur: 1000; 
+                         easing: easeOutElastic;
+                         "></a-plane>
 
-    <a-entity camera></a-entity>
+    <a-entity camera look-controls orbit-controls="target: 0 0.5 0; minDistance: 0.1; maxDistance: 180; maxPolarAngle: 180; rotateSpeed: 0.1; initialPosition: -4 3 6"></a-entity>
+
+    
   </a-scene>
   
 </body>
