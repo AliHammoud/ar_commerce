@@ -56,6 +56,10 @@ body {
   cursor: pointer;
 }
 
+.color:nth-child(n+2){
+  margin-left: 1.25rem;
+}
+
 #backdrop{
   transition: 0.3s;
   position: absolute;
