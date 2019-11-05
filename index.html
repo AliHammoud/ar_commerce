@@ -51,7 +51,7 @@
         this.el.addEventListener('model-loaded', function(e){
           e.detail.model.traverse(node => {
             if (node.material){
-              var tex = new THREE.TextureLoader().load( "/assets/models/airmax/airmax-texture-1.png");
+              var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-1.png");
               tex.flipY = false;
               node.material.map = tex;
             }
@@ -62,7 +62,7 @@
               e.detail.model.traverse(node => {
                 if (node.material){
                   console.log(node)
-                  var tex = new THREE.TextureLoader().load( "/assets/models/airmax/airmax-texture-" + ev.target.id + ".png");
+                  var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-" + ev.target.id + ".png");
                   tex.flipY = false;
                   node.material.map = tex;
                 }
