@@ -51,7 +51,7 @@
         this.el.addEventListener('model-loaded', function(e){
           e.detail.model.traverse(node => {
             if (node.material){
-              var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-1.png");
+              var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-1.jpg");
               tex.flipY = false;
               node.material.map = tex;
             }
@@ -62,7 +62,7 @@
               e.detail.model.traverse(node => {
                 if (node.material){
                   console.log(node)
-                  var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-" + ev.target.id + ".png");
+                  var tex = new THREE.TextureLoader().load( "assets/models/airmax/airmax-texture-" + ev.target.id + ".jpg");
                   tex.flipY = false;
                   node.material.map = tex;
                 }
@@ -78,7 +78,6 @@
   <a-scene vr-mode-ui="enabled: false" loading-screen="dotsColor: black; backgroundColor: white; enabled: false">
 
     <a-assets>
-      <a-asset-item change-tex id="shoe" src="assets/models/shoe3/shoe.gltf"></a-asset-item>
       <a-asset-item id="shoe-airmax" src="assets/models/airmax/airmax.gltf"></a-asset-item>
       <img id="ground" src="./assets/img/shoe-shadow.png">
     </a-assets>
